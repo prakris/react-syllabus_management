@@ -49,9 +49,9 @@ class App extends Component {
 
  handleTopic = (index) =>
  {
-   this.setState({topModalSelect:true,mindex:index}) 
+   this.setState({topModalSelect:true,mindex:index})
  }
- 
+
  handleHide = () =>
  {
    this.setState({chapModalSelect:false,topModalSelect:false})
@@ -68,7 +68,7 @@ class App extends Component {
  }
 
  handleChapSubmit = () =>
- {    
+ {
     const { chapValue ,subjectData, chapindex, editChap } = this.state;
     if(editChap)
     {
@@ -129,7 +129,7 @@ handleTopEdit = (tindex,index) =>
  }
 
  handleClick = () =>
- { 
+ {
    const {std,sub} =this.state;
    let selectStd=data.find(match => match.standard == std)
    var selectSub=selectStd.content.find(match => match.subject == sub)
@@ -138,11 +138,11 @@ handleTopEdit = (tindex,index) =>
 
   render()
   {
-    const getstd=data.find(match => match.standard == this.state.std) 
-    console.log('getstd=',getstd)
-   return( 
+    const getstd=data.find(match => match.standard == this.state.std)
+    console.log('gd',getstd)
+   return(
       <div>
-        <h1 align="center"><b>Syllabus Management</b></h1> 
+        <h1 align="center"><b>Syllabus Management</b></h1>
         <Form>
               <Form.Row>
                 <Col sm={5}>
@@ -158,11 +158,11 @@ handleTopEdit = (tindex,index) =>
                     <Form.Control as="select" value={this.state.sub} onChange={this.handleSub} >
                       <option hidden>Select Your Subject</option>
                       { getstd ?
-                        getstd.content.map((value,index)=> 
+                        getstd.content.map((value,index)=>
                         <option key={index} >{value.subject}</option>
                          ):''
                       }
-            
+
                     </Form.Control>
                 </Col>
                 <Col sm={2}  style={{alignSelf: "flex-end"}}>
@@ -171,8 +171,8 @@ handleTopEdit = (tindex,index) =>
                       {<FontAwesomeIcon icon={faCheckCircle} />}
                   </Button>
                 </Col>
-          </Form.Row> 
-        </Form>    
+          </Form.Row>
+        </Form>
         <div>
           <Tables tValue={this.state.subjectData}
                   handleChapter={this.handleChapter}
@@ -190,14 +190,14 @@ handleTopEdit = (tindex,index) =>
                   handleChapValue={this.handleChapValue}
                   handleChapSubmit={this.handleChapSubmit}
                   />
-  
+
           <ModalT show={this.state.topModalSelect}
                    handleHide={this.handleHide}
                    value={this.state.topValue}
                    handleTopValue={this.handleTopValue}
-                   handleTopSubmit={this.handleTopSubmit} 
+                   handleTopSubmit={this.handleTopSubmit}
                    />
-       </div>              
+       </div>
       </div>
     );
   }
